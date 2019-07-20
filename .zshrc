@@ -102,3 +102,5 @@ alias ls="ls -lh --color=auto"
 alias mv="mv -fv"
 alias cp="cp -fv"
 alias rm="rm -rfv"
+
+alias tmux="tmux -2"
