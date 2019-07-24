@@ -1,0 +1,16 @@
+FROM ubuntu
+
+ARG SSH_KEY=""
+
+RUN apt update \ 
+    && apt install -y openssh-server \
+    && mkdir /root/.ssh     \
+    && chmod 700 /root/.ssh \
+    && sed -i "s/^.*PasswordAuthentication.*$/PasswordAuthentication no/" /etc/ssh/sshd_config \
+    && sed -i "s/^.*X11Forwarding.*$/X11Forwarding yes/" /etc/ssh/sshd_config \
+    && sed -i "s/^.*X11UseLocalhost.*$/X11UseLocalhost no/" /etc/ssh/sshd_config \
+    && grep "^X11UseLocalhost" /etc/ssh/sshd_config || echo "X11UseLocalhost no" >> /etc/ssh/sshd_config
+
+RUN echo ${SSH_KEY} >> /root/.ssh/authorized_keys
+
+ENTRYPOINT bash 
