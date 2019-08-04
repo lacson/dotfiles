@@ -1,5 +1,9 @@
+## Custom Ubuntu Dockerfile with X11/SSH forwarding enabled
+
 FROM ubuntu
 
+# empty argument, need to pipe in public SSH key via
+# cmd-line argument
 ARG SSH_KEY=""
 
 RUN apt update \ 
@@ -9,7 +13,8 @@ RUN apt update \
     && sed -i "s/^.*PasswordAuthentication.*$/PasswordAuthentication no/" /etc/ssh/sshd_config \
     && sed -i "s/^.*X11Forwarding.*$/X11Forwarding yes/" /etc/ssh/sshd_config \
     && sed -i "s/^.*X11UseLocalhost.*$/X11UseLocalhost no/" /etc/ssh/sshd_config \
-    && grep "^X11UseLocalhost" /etc/ssh/sshd_config || echo "X11UseLocalhost no" >> /etc/ssh/sshd_config
+    && grep "^X11UseLocalhost" /etc/ssh/sshd_config || echo "X11UseLocalhost no" >> /etc/ssh/sshd_config \
+    && service ssh enable
 
 RUN echo ${SSH_KEY} >> /root/.ssh/authorized_keys
 
