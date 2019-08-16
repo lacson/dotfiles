@@ -68,7 +68,25 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-mods
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(battery git docker docker-compose python fedora)
+plugins=(battery git docker docker-compose python)
+
+# handy dandy OS logic here
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    DISTRO=$(lsb_release -i | awk '{print $3}')
+    if [[ "$DISTRO" == "Fedora" ]]; then
+        plugins+=(fedora)
+    elif [[ "$DISTRO" == "Ubuntu" ]]; then
+        plugins+=(ubuntu command-not-found)
+    elif [[ "$DISTRO" == "Debian" ]]; then
+        plugins+=(debian)
+    else
+        # don't add anything if we don't know the distro
+    fi
+elif [[ "$OSTYPE" == "darwin" ]]; then
+    plugins+=(osx iterm2)
+else
+    # don't add anything for other OSes
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +115,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Source a global variables file with IPs
+[ -f ~/.global_variables ] && . ~/.global_variables
 
 alias ls="ls -lh --color=auto"
 alias mv="mv -fv"
