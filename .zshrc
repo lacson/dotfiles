@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jonathan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -82,7 +82,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     else
         # don't add anything if we don't know the distro
     fi
-elif [[ "$OSTYPE" == "darwin" ]]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
     plugins+=(osx iterm2)
 else
     # don't add anything for other OSes
@@ -119,9 +119,18 @@ source $ZSH/oh-my-zsh.sh
 # Source a global variables file with IPs
 [ -f ~/.global_variables ] && . ~/.global_variables
 
-alias ls="ls -lh --color=auto"
-alias mv="mv -fv"
-alias cp="cp -fv"
-alias rm="rm -rfv"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias ls="ls -lh --color=auto"
+    alias mv="mv -fv"
+    alias cp="cp -fv"
+    alias rm="rm -rfv"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls="gls -lh --color=auto"
+    alias mv="gmv -fv"
+    alias cp="gcp -fv"
+    alias rm="grm -rfv"
+else
+    # do nothing
+fi
 
 alias tmux="tmux -2"
