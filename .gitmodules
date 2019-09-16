@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/Dockerfile.vim"]
 	path = .vim/bundle/Dockerfile.vim
 	url = https://github.com/ekalinin/Dockerfile.vim.git
+[submodule ".config/i3status/i3spotifystatus"]
+	path = .config/i3status/i3spotifystatus
+	url = https://github.com/rpieja/i3spotifystatus.git
