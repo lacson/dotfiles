@@ -120,7 +120,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.global_variables ] && . ~/.global_variables
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias ls="ls -lh --color=auto"
+    alias ls="ls -Xlh --color=auto"
     alias mv="mv -fv"
     alias cp="cp -fv"
     alias rm="rm -rfv"
