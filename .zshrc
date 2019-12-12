@@ -68,7 +68,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-mods
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(battery git docker docker-compose python)
+plugins=(battery docker docker-compose python)
 
 # handy dandy OS logic here
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
