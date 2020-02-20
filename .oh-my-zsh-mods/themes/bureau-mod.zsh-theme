@@ -117,7 +117,7 @@ bureau_precmd () {
 
 setopt prompt_subst
 PROMPT='> $_LIBERTY '
-RPROMPT='[$(battery_pct_prompt)] $(bureau_git_prompt)'
+RPROMPT='$(battery_pct_prompt) $(bureau_git_prompt)'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd bureau_precmd
