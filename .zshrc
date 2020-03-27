@@ -133,4 +133,7 @@ else
     # do nothing
 fi
 
+# make time look more like bash
+TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
+
 alias tmux="tmux -2"
