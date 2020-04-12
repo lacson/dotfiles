@@ -136,4 +136,5 @@ fi
 # make time look more like bash
 TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
 
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux="tmux -2"
