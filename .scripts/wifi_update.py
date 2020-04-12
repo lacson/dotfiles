@@ -58,6 +58,8 @@ def main():
                 open(os.path.expanduser(FILE_TO_UPDATE), 'w').writelines(file_contents)
                 print("Success")
                 exit()
+    else:
+        exit()
 
 
 if __name__ == "__main__":
