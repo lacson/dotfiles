@@ -8,7 +8,24 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bureau-mod"
+
+# figure out if we should have a battery prompt or not
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    if [[ -d "/proc/acpi/battery/BAT*" ]]; then
+        ZSH_THEME="bureau-mod"
+    else
+        ZSH_THEME="bureau-mod-desk"
+    fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    IS_LAPTOP=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Identifier" | grep "Book")
+    if [[ ! -z "$IS_LAPTOP" ]]; then
+        ZSH_THEME="bureau-mod"
+    else
+        ZSH_THEME="bureau-mod-desk"
+    fi
+else
+    # don't add anything for other OSes
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
