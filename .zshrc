@@ -89,7 +89,14 @@ plugins=(battery docker docker-compose python)
 
 # handy dandy OS logic here
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    DISTRO=$(lsb_release -i | awk '{print $3}')
+
+    # get Distro we're using
+    if [[ -x "$(command -v lsb_release)" ]]; then
+        DISTRO=$(lsb_release -i | awk '{print $3}')
+    else
+        DISTRO=$(hostnamectl | grep "Operating System:" | cut -d " " -f 5)
+    fi
+
     if [[ "$DISTRO" == "Fedora" ]]; then
         plugins+=(fedora)
     elif [[ "$DISTRO" == "Ubuntu" ]]; then
