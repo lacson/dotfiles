@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # figure out if we should have a battery prompt or not
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    if [[ -d "/proc/acpi/battery/BAT*" ]]; then
+    if [[ -d "/proc/acpi/battery/BAT*" || -d "/sys/module/battery" ]]; then
         ZSH_THEME="bureau-mod"
     else
         ZSH_THEME="bureau-mod-desk"
