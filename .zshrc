@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # figure out if we should have a battery prompt or not
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    if [[ -d "/proc/acpi/battery/BAT*" ]]; then
+    if [[ -d "/proc/acpi/battery/BAT*" || -d "/sys/module/battery" ]]; then
         ZSH_THEME="bureau-mod"
     else
         ZSH_THEME="bureau-mod-desk"
@@ -89,7 +89,14 @@ plugins=(battery docker docker-compose python)
 
 # handy dandy OS logic here
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    DISTRO=$(lsb_release -i | awk '{print $3}')
+
+    # get Distro we're using
+    if [[ -x "$(command -v lsb_release)" ]]; then
+        DISTRO=$(lsb_release -i | awk '{print $3}')
+    else
+        DISTRO=$(hostnamectl | grep "Operating System:" | cut -d " " -f 5)
+    fi
+
     if [[ "$DISTRO" == "Fedora" ]]; then
         plugins+=(fedora)
     elif [[ "$DISTRO" == "Ubuntu" ]]; then
