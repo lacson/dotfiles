@@ -153,6 +153,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias mv="gmv -fv"
     alias cp="gcp -fv"
     alias rm="grm -rfv"
+    # iTerm integration
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 else
     # do nothing
 fi
@@ -162,3 +164,5 @@ TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux="tmux -2"
+
+
