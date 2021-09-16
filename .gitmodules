@@ -19,3 +19,6 @@
 [submodule ".config/i3status/i3spotifystatus"]
 	path = .config/i3status/i3spotifystatus
 	url = https://github.com/rpieja/i3spotifystatus.git
+[submodule ".oh-my-zsh-mods/plugins/zsh-autosuggestions"]
+	path = .oh-my-zsh-mods/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
