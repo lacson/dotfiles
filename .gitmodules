@@ -23,5 +23,5 @@
 	path = .oh-my-zsh-mods/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "/Users/jonathan/.tmux/plugins/tpm"]
-	path = /Users/jonathan/.tmux/plugins/tpm
+	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
