@@ -107,7 +107,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # don't add anything if we don't know the distro
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins+=(osx iterm2)
+    plugins+=(macos iterm2)
 else
     # don't add anything for other OSes
 fi
