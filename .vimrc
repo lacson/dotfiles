@@ -4,8 +4,7 @@ colorscheme monokai
 filetype plugin indent on
 
 " line numbers
-" set number
-set nu rnu
+set number
 
 " lightline stuff
 set laststatus=2

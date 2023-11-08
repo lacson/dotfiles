@@ -44,10 +44,10 @@ fi
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -112,6 +112,10 @@ else
     # don't add anything for other OSes
 fi
 
+# update automatically, every 13 days
+zstyle ':omz:update' frequency   13
+zstyle ':omz:update' mode        auto
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -155,6 +159,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias rm="grm -rfv"
     # iTerm integration
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    alias sshon="sudo systemsetup -setremotelogin on"
+    alias sshoff="sudo systemsetup -setremotelogin off"
 else
     # do nothing
 fi
@@ -164,5 +170,4 @@ TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux="tmux -2"
-
 
